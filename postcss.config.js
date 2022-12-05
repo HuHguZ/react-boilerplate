@@ -1,5 +1,5 @@
 const cssnano = require('cssnano');
-const plugins = { };
+const plugins = {};
 
 if (process.env.NODE_ENV === 'production') {
     plugins.cssnano = cssnano({
