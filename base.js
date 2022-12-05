@@ -1,7 +1,6 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { getThemeVariables } = require('antd/dist/theme');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -29,6 +28,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader', 'postcss-loader'],
+            },
+            {
                 test: /\.s[ac]ss$/i,
                 use: [
                     'style-loader',
@@ -41,25 +44,6 @@ module.exports = {
                         },
                     },
                     'sass-loader',
-                ],
-            },
-            {
-                test: /antd.+?\.less$/i,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'postcss-loader', //for css compression
-                    {
-                        loader: 'less-loader',
-                        options: {
-                            lessOptions: {
-                                modifyVars: getThemeVariables({
-                                    dark: true,
-                                }),
-                                javascriptEnabled: true,
-                            },
-                        },
-                    },
                 ],
             },
             {

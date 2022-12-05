@@ -83,6 +83,48 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 0,
         '@typescript-eslint/no-empty-function': 0,
         'import/no-unresolved': 'off',
-        'import/order': 'error',
+        'react/jsx-sort-props': [
+            1,
+            {
+                shorthandFirst: true,
+                callbacksLast: true,
+                multiline: 'first',
+                reservedFirst: ['key'],
+            },
+        ],
+        'import/order': [
+            'error',
+            {
+                groups: [
+                    ['builtin', 'external'],
+                    'internal',
+                    ['parent', 'sibling'],
+                    'index',
+                    'object',
+                ],
+                pathGroups: [
+                    {
+                        pattern: '*.scss',
+                        group: 'sibling',
+                        position: 'after',
+                        patternOptions: { matchBase: true },
+                    },
+                ],
+                'newlines-between': 'always',
+                alphabetize: {
+                    order: 'asc',
+                    caseInsensitive: true,
+                },
+            },
+        ],
+        'sort-imports': [
+            'error',
+            {
+                ignoreCase: true,
+                ignoreDeclarationSort: true,
+                ignoreMemberSort: false,
+                memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+            },
+        ],
     },
 };

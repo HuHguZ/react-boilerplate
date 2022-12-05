@@ -1,7 +1,5 @@
 const cssnano = require('cssnano');
-const plugins = {
-    'postcss-modules-values': {},
-};
+const plugins = { };
 
 if (process.env.NODE_ENV === 'production') {
     plugins.cssnano = cssnano({

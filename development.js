@@ -8,6 +8,8 @@ module.exports = merge(base, {
     devServer: {
         port: 3000,
         hot: true,
+        open: true,
+        compress: true,
     },
     output: {
         filename: '[name].js',
