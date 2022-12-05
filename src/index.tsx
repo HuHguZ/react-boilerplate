@@ -1,8 +1,16 @@
+import { ConfigProvider, theme } from 'antd';
 import React from 'react';
 import { render } from 'react-dom';
 
 import App from './app';
 
-// electron react app should use HashRouter
-
-render(<App />, document.getElementById('root'));
+render(
+    <ConfigProvider
+        theme={{
+            algorithm: [theme.darkAlgorithm],
+        }}
+    >
+        <App />
+    </ConfigProvider>,
+    document.getElementById('root')
+);
